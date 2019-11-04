@@ -74,6 +74,9 @@ public class LikedServiceImpl implements LikedService {
         }
     }
 
+    /**
+     * TODO findById() updateInfo()
+     */
     @Override
     @Transactional
     public void transLikedCountFromRedis2DB() {

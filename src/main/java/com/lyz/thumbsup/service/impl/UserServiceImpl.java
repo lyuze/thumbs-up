@@ -23,22 +23,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserInfoRepository userRepository;
 
-    @Autowired
-    RedisUtils redisUtils;
-
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
-
-    @Override
-    public void logout(String userId) {
-        //从 Redis 中删除当前用户对应的key
-        String key = String.format(RedisConsts.TOKEN_TEMPLATE, userId);
-        redisUtils.deleteString(key);
-    }
-
     @Override
     public List<UserInfo> findAllByRoleAndExperience(Integer page, Integer size, Integer sort, Integer role, Integer experience) {
         return userRepository.findAllByRoleAndExperience(genSortedPageable(page, size, sort), role, experience).getContent();
+    }
+
+    @Override
+    public UserInfo findById(String id) {
+        return null;
+    }
+
+    @Override
+    public void updateInfo(UserInfo user) {
+
     }
 
     /**
